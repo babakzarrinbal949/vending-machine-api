@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "567bb872-198e-4dbd-8194-8718e9deefb2",
+		"name": "Vending Machine API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21082241"
+	},
+	"item": [
+		{
+			"name": "Register User (POST)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"buyer\",\n  \"password\": \"password123\",\n  \"deposit\": 0,\n  \"role\": \"buyer\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/users",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users"
+					]
+				},
+				"description": "Register a new user with the buyer role."
+			},
+			"response": []
+		},
+		{
+			"name": "Login (POST)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"buyer\",\n  \"password\": \"password123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				},
+				"description": "Authenticate the user and get the JWT token."
+			},
+			"response": []
+		},
+		{
+			"name": "Deposit (POST)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"amount\": 50\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/users/deposit",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"deposit"
+					]
+				},
+				"description": "Deposit coins (5, 10, 20, 50, or 100 cents) into the user's account."
+			},
+			"response": []
+		},
+		{
+			"name": "Buy (POST)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"productId\": \"replace_with_product_id\",\n  \"amount\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/users/buy",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"buy"
+					]
+				},
+				"description": "Buy products using the deposited amount."
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Deposit (POST)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/users/reset",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"reset"
+					]
+				},
+				"description": "Reset the user's deposit back to 0."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/products",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJ1eWVyIiwicm9sZSI6ImJ1eWVyIiwiaWF0IjoxNjkxNDM1NjQ4LCJleHAiOjE2OTE0MzkyNDh9.mOxAy95szZ5GElhtNIp09B4BzrIjAFoO-DI3LqisE_s",
+			"type": "string"
+		}
+	]
+}
