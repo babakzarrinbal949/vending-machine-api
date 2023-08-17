@@ -17,7 +17,7 @@ router.post("/login", async (req, res) => {
   });
   await user.save();
 
-  res.json({ message: "Login successful", token: user.token });
+  res.json({ message: "Login successful", token: user.token, balance: user.deposit });
 });
 
 module.exports = router;
