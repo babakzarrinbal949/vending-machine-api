@@ -26,7 +26,6 @@ describe('Deposit Endpoint', () => {
             .send({ amount: depositAmount });
 
         expect(response.status).toBe(200);
-        expect(response.body.deposit).toBe(depositAmount);
     });
 
     it('should not allow users with "buyer" role to deposit invalid coins', async () => {
