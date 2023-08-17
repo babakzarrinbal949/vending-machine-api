@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "567bb872-198e-4dbd-8194-8718e9deefb2",
+		"_postman_id": "2fa6c4b4-e42c-404e-a52d-6c93f5a4c9a7",
 		"name": "Vending Machine API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "21082241"
+		"_exporter_id": "2919965"
 	},
 	"item": [
 		{
@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"username\": \"buyer\",\n  \"password\": \"password123\",\n  \"deposit\": 0,\n  \"role\": \"buyer\"\n}",
+					"raw": "{\n  \"username\": \"seller\",\n  \"password\": \"password123\",\n  \"deposit\": 50,\n  \"role\": \"seller\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -165,6 +165,27 @@
 			"request": {
 				"method": "GET",
 				"header": [],
+				"url": {
+					"raw": "{{base_url}}/products",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    amountAvailable: 10,\r\n  cost: 10,\r\n  productName: \"product1\",\r\n  sellerId: \"64de451689921396b028bd47\",\r\n}"
+				},
 				"url": {
 					"raw": "{{base_url}}/products",
 					"host": [

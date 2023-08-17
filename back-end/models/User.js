@@ -1,11 +1,12 @@
-class User {
-    constructor(username, password, deposit, role) {
-        this.username = username;
-        this.password = password;
-        this.deposit = deposit;
-        this.role = role;
-        this.token = null;
-    }
-}
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
+const UserSchema = new Schema({
+  userName: { type: String },
+  password: { type: String },
+  deposit: { type: Number },
+  role: { type: String },
+  token: { type: String, default: null },
+});
 
-module.exports = User;
+const UserModel = mongoose.model("user", UserSchema);
+module.exports = UserModel;
