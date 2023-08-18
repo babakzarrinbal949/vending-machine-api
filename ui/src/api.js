@@ -1,7 +1,7 @@
 // src/api.js
 import axios from 'axios';
 
-const baseURL = process.env.serverBaseUrl || 'http://localhost:3000';
+const baseURL = process.env.serverBaseUrl || "/api";
 
 export const loginUser = async (username, password) => {
     try {
