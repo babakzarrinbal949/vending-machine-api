@@ -11,7 +11,7 @@ function ProductModal({ product, show, onHide, onPurchase, success, message }) {
     };
 
     const handlePurchase = () => {
-        onPurchase(product.id, quantity);
+        onPurchase(product._id, quantity);
         // onHide();
     };
 
